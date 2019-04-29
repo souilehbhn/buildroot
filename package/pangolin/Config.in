@@ -1,0 +1,13 @@
+config BR2_PACKAGE_PANGOLIN
+	bool "Pangolin"
+  depends on BR2_PACKAGE_HAS_LIBGL
+  depends on BR2_PACKAGE_LIBGLEW
+  depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_LIBGLU
+  help
+    Pangolin, is a lightweight library to manipulate OpenGL display
+    needed by some graphical software.
+    https://github.com/stevenlovegroove/Pangolin
+
+comment "Pangolin depends on libglu and needs an OpenGL backend"
+	depends on !BR2_PACKAGE_LIBGLEW || !BR2_PACKAGE_HAS_LIBGL
