@@ -1,0 +1,15 @@
+config BR2_PACKAGE_ORB_SLAM2
+	bool "ORB-SLAM 2"
+  depends on BR2_PACKAGE_HAS_LIBGL
+  depends on BR2_PACKAGE_LIBGLEW
+  depends on BR2_INSTALL_LIBSTDCPP
+  depends on BR2_PACKAGE_OPENCV3
+  select BR2_PACKAGE_PANGOLIN
+  select BR2_PACKAGE_EIGEN
+
+  help
+    ORB-SLAM, SLAM algorithm
+    https://github.com/raulmur/ORB_SLAM2
+
+comment "ORB-SLAM 2 requires OpenCV3 and Pangolin"
+	depends on !BR2_PACKAGE_LIBGLEW || !BR2_PACKAGE_HAS_LIBGL || !BR2_PACKAGE_OPENCV3

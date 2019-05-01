@@ -2245,4 +2245,7 @@ menu "Text editors and viewers"
 	source "package/vim/Config.in"
 endmenu
 
+menu "SLAM programmes"
+	source "package/orb-slam2/Config.in"
+endmenu
 endmenu

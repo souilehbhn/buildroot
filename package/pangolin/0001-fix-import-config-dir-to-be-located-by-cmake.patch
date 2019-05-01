@@ -1,0 +1,13 @@
+diff --git a/src/PangolinConfig.cmake.in b/src/PangolinConfig.cmake.in
+index c81cfd9..8c57b75 100644
+--- a/src/PangolinConfig.cmake.in
++++ b/src/PangolinConfig.cmake.in
+@@ -4,7 +4,7 @@ SET( Pangolin_INCLUDE_DIRS "@EXPORT_LIB_INC_DIR@;@USER_INC@" )
+ SET( Pangolin_INCLUDE_DIR  "@EXPORT_LIB_INC_DIR@;@USER_INC@" )
+ 
+ # Library dependencies (contains definitions for IMPORTED targets)
+-if( NOT TARGET @LIBRARY_NAME@ AND NOT @PROJECT_NAME@_BINARY_DIR )
++if( NOT TARGET @LIBRARY_NAME@ AND NOT @PROJECT_NAME@_DIR )
+   include( "${PROJECT_CMAKE_DIR}/@PROJECT_NAME@Targets.cmake" )
+   @ExternConfig@
+ endif()
