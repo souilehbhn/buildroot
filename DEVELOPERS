@@ -441,6 +441,7 @@ F:	package/initscripts/
 F:	package/intel-microcode/
 F:	package/libpam-radius-auth/
 F:	package/libpam-tacplus/
+F:	package/liburiparser/
 F:	package/modem-manager/
 F:	package/pamtester/
 F:	package/pcm-tools/
@@ -455,6 +456,7 @@ F:	package/sysvinit/
 F:	package/util-linux/
 F:	package/tpm2-abrmd/
 F:	package/tpm2-tools/
+F:	package/tpm2-totp/
 F:	package/tpm2-tss/
 
 N:	Carsten Schoenert <c.schoenert@gmail.com>
@@ -1917,6 +1919,7 @@ N:	Romain Naour <romain.naour@gmail.com>
 F:	package/aubio/
 F:	package/bullet/
 F:	package/efl/
+F:	package/enet/
 F:	package/enlightenment/
 F:	package/flare-engine/
 F:	package/flare-game/
