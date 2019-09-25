@@ -316,6 +316,7 @@ comment "Graphic libraries"
 	source "package/sdl2_ttf/Config.in"
 	source "package/tk/Config.in"
 	source "package/pangolin/Config.in"
+	source "package/g2o/Config.in"
 
 comment "Other GUIs"
 	source "package/qt5/Config.in"
@@ -1723,6 +1724,7 @@ menu "Other"
 	source "package/libuv/Config.in"
 	source "package/lightning/Config.in"
 	source "package/linux-pam/Config.in"
+	source "package/suitesparse/Config.in"
 if BR2_PACKAGE_LINUX_PAM
 comment "linux-pam plugins"
 	source "package/libpam-radius-auth/Config.in"
@@ -2248,5 +2250,6 @@ endmenu
 
 menu "SLAM programmes"
 	source "package/orb-slam2/Config.in"
+	source "package/lsdslam/Config.in"
 endmenu
 endmenu

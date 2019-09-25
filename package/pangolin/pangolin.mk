@@ -20,7 +20,7 @@ endif
 ifeq ($(BR2_PACKAGE_LIBPNG),y)
 PANGOLIN_DEPENDENCIES += libpng
 endif
-ifeq ($(BR2_PACKAGE_JPEG),y)
+ifeq ($(BR2_PACKAGE_LIBJPEG),y)
 PANGOLIN_DEPENDENCIES += libjpeg
 endif
 $(eval $(cmake-package))

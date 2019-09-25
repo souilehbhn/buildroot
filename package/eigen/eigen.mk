@@ -11,7 +11,7 @@ EIGEN_LICENSE = MPL2, BSD-3-Clause, LGPL-2.1
 EIGEN_LICENSE_FILES = COPYING.MPL2 COPYING.BSD COPYING.LGPL COPYING.README
 EIGEN_INSTALL_STAGING = YES
 EIGEN_INSTALL_TARGET = NO
-EIGEN_DEST_DIR = $(STAGING_DIR)/usr/include/
+EIGEN_DEST_DIR = $(STAGING_DIR)/usr/include/eigen3
 
 ifeq ($(BR2_PACKAGE_EIGEN_UNSUPPORTED_MODULES),y)
 define EIGEN_INSTALL_UNSUPPORTED_MODULES_CMDS
@@ -23,7 +23,7 @@ endif
 # Generate the .pc file at build time
 define EIGEN_BUILD_CMDS
 	sed -r -e 's,^Version: .*,Version: $(EIGEN_VERSION),' \
-		-e 's,^Cflags: .*,Cflags: -I$$\{prefix\}/include,' \
+		-e 's,^Cflags: .*,Cflags: -I$$\{prefix\}/include/eigen3,' \
 		-e 's,^prefix.*,prefix=/usr,' \
 		$(@D)/eigen3.pc.in >$(@D)/eigen3.pc
 endef

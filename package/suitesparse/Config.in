@@ -1,0 +1,67 @@
+comment "Suitesparse needs CLAPACK"
+	depends on !BR2_PACKAGE_CLAPACK
+
+menuconfig BR2_PACKAGE_SUITESPARSE
+	bool "suitesparse"
+	depends on BR2_PACKAGE_CLAPACK
+	help
+	  A Suite of Sparse matrix package at 
+	  http://www.suitesparse.com
+
+
+if BR2_PACKAGE_SUITESPARSE
+
+comment "SuiteSparse modules"
+comment "Not all modules are offered"
+
+config BR2_PACKAGE_SUITESPARSE_METIS
+	bool "metis"
+	help
+	  METIS 5.1.0 with minor modificatiosn to incorporate it 
+	  into SuiteSparse.
+
+config BR2_PACKAGE_SUITESPARSE_AMD
+	bool "AMD"
+	help
+	  A set of routines for permuting sparse matrices prior to 
+	  factorization.
+
+config BR2_PACKAGE_SUITESPARSE_CAMD
+	bool "CAMD"
+	help
+	  A set of routines for permuting sparse matrices prior to 
+	  factorization.
+
+config BR2_PACKAGE_SUITESPARSE_CCOLAMD
+	bool "CCOLAMD"
+	help
+	  Constarined column approximate minimum degree ordering
+	  algorithm.
+
+config BR2_PACKAGE_SUITESPARSE_COLAMD
+	bool "COLAMD"
+	help
+	  Column approximate minimum degree ordering algorithm.
+
+config BR2_PACKAGE_SUITESPARSE_CHOLMOD
+	bool "CHOLMOD"
+	depends on BR2_PACKAGE_CLAPACK
+	select BR2_PACKAGE_SUITESPARSE_METIS
+	select BR2_PACKAGE_SUITESPARSE_AMD
+	select BR2_PACKAGE_SUITESPARSE_CAMD
+	select BR2_PACKAGE_SUITESPARSE_CCOLAMD
+	select BR2_PACKAGE_SUITESPARSE_COLAMD
+	help
+	  A sparse Cholesky modification package
+	  CHOLMOD is a set of rourines for factorizing sparse 
+	  symmetric positive definite matrices.
+
+config BR2_PACKAGE_SUITESPARSE_CXSPARSE
+	bool "cxsparse"
+	help
+	  CXSparse is a Concise Sparse Matrix package that oerates 
+	  on both real and complex matrices.
+	  CXSparse is backward compatible with CSparse.
+
+
+endif

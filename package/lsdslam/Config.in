@@ -1,0 +1,19 @@
+config BR2_PACKAGE_LSDSLAM
+	bool "lsd_slam"
+	depends on BR2_PACKAGE_EIGEN
+	depends on BR2_PACKAGE_PANGOLIN
+	depends on BR2_PACKAGE_G2O
+	depends on BR2_PACKAGE_OPENCV3
+	depends on BR2_PACKAGE_BOOST
+	select BR2_PACKAGE_BOOST_THREAD
+	select BR2_PACKAGE_BOOST_FILESYSTEM
+	select BR2_PACKAGE_BOOST_SYSTEM
+	select BR2_PACKAGE_OPENCV3_LIB_IMGPROC
+	select BR2_PACKAGE_OPENCV3_LIB_CALIB3D
+	select BR2_PACKAGE_OPENCV3_LIB_HIGHGUI
+	help
+	  LSD-SLAM Large-Scale Direct Monocular SLAM
+	  https://github.com/tum_vision/lsd_slam
+
+comment "LSD_SLAM depends on OpenCV, Eigen, Boost, g2o and pangolin"
+	depends on !BR2_PACKAGE_EIGEN || !BR2_PACKAGE_PANGOLIN || !BR2_PACKAGE_G2O || !BR2_PACKAGE_OPENCV3 || !BR2_PACKAGE_BOOST
