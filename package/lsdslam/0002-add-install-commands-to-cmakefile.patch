@@ -1,0 +1,13 @@
+--- a/lsd_slam_core/src/CMakeLists.txt	2019-09-27 09:33:54.158082460 +0100
++++ b/lsd_slam_core/src/CMakeLists.txt	2019-09-27 09:39:38.146072403 +0100
+@@ -78,8 +78,9 @@
+ # build shared library.
+ add_library(lsdslam SHARED ${SOURCE_FILES})
+ target_link_libraries(lsdslam ${FABMAP_LIB} ${Boost_LIBRARIES} ${OpenCV_LIBS} g2o_core g2o_stuff ${CSPARSE_LIBRARIES} cxsparse g2o_solver_csparse g2o_csparse_extension g2o_types_sim3 g2o_types_sba GLEW GLU GL)
++install(TARGETS lsdslam DESTINATION lib)
+ 
+ # build image node
+ add_executable(LSD LSD.cpp)
+ target_link_libraries(LSD lsdslam ${Pangolin_LIBRARIES})
+-
++install(TARGETS LSD DESTINATION bin)

@@ -1,0 +1,128 @@
+--- a/CMakeLists.txt	2019-09-12 17:04:50.685389592 +0100
++++ b/CMakeLists.txt	2019-09-26 22:07:27.289857698 +0100
+@@ -194,62 +194,62 @@
+ 
+ # Start of SSE* autodetect code
+ # (borrowed from MRPT CMake scripts, BSD)
+-option(DO_SSE_AUTODETECT "Enable autodetection of SSE* CPU sets and enable their use in optimized code" ON)
+-if(NOT EXISTS "/proc/cpuinfo")
+-	set(DO_SSE_AUTODETECT OFF)
+-endif()
+-if (DO_SSE_AUTODETECT)
+-  file(READ "/proc/cpuinfo" G2O_CPU_INFO)
+-endif()
++#option(DO_SSE_AUTODETECT "Enable autodetection of SSE* CPU sets and enable their use in optimized code" ON)
++#if(NOT EXISTS "/proc/cpuinfo")
++#	set(DO_SSE_AUTODETECT OFF)
++#endif()
++#if (DO_SSE_AUTODETECT)
++#  file(READ "/proc/cpuinfo" G2O_CPU_INFO)
++#endif()
+ 
+ # Macro for each SSE* var: Invoke with name in uppercase:
+-macro(DEFINE_SSE_VAR  _setname)
+-	string(TOLOWER ${_setname} _set)
+-	if (DO_SSE_AUTODETECT)
+-		# Automatic detection:
+-		set(CMAKE_G2O_HAS_${_setname} 0)
+-		if (${G2O_CPU_INFO} MATCHES ".*${_set}.*")
+-			set(CMAKE_G2O_HAS_${_setname} 1)
+-		endif()
+-	else (DO_SSE_AUTODETECT)
+-		# Manual:
+-		set("DISABLE_${_setname}" OFF CACHE BOOL "Forces compilation WITHOUT ${_setname} extensions")
+-		mark_as_advanced("DISABLE_${_setname}")
+-		set(CMAKE_G2O_HAS_${_setname} 0)
+-		if (NOT DISABLE_${_setname})
+-			set(CMAKE_G2O_HAS_${_setname} 1)
+-		endif (NOT DISABLE_${_setname})
+-	endif (DO_SSE_AUTODETECT)
+-endmacro(DEFINE_SSE_VAR)
++#macro(DEFINE_SSE_VAR  _setname)
++#	string(TOLOWER ${_setname} _set)
++#	if (DO_SSE_AUTODETECT)
++#		# Automatic detection:
++#		set(CMAKE_G2O_HAS_${_setname} 0)
++#		if (${G2O_CPU_INFO} MATCHES ".*${_set}.*")
++#			set(CMAKE_G2O_HAS_${_setname} 1)
++#		endif()
++#	else (DO_SSE_AUTODETECT)
++#		# Manual:
++#		set("DISABLE_${_setname}" OFF CACHE BOOL "Forces compilation WITHOUT ${_setname} extensions")
++#		mark_as_advanced("DISABLE_${_setname}")
++#		set(CMAKE_G2O_HAS_${_setname} 0)
++#		if (NOT DISABLE_${_setname})
++#			set(CMAKE_G2O_HAS_${_setname} 1)
++#		endif (NOT DISABLE_${_setname})
++#	endif (DO_SSE_AUTODETECT)
++#endmacro(DEFINE_SSE_VAR)
+ 
+ # SSE optimizations:
+-DEFINE_SSE_VAR(SSE2)
+-DEFINE_SSE_VAR(SSE3)
+-DEFINE_SSE_VAR(SSE4_1)
+-DEFINE_SSE_VAR(SSE4_2)
+-DEFINE_SSE_VAR(SSE4_A)
++#DEFINE_SSE_VAR(SSE2)
++#DEFINE_SSE_VAR(SSE3)
++#DEFINE_SSE_VAR(SSE4_1)
++#DEFINE_SSE_VAR(SSE4_2)
++#DEFINE_SSE_VAR(SSE4_A)
+ 
+ # Add build flags for clang AND GCC
+-if (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" OR CMAKE_COMPILER_IS_GNUCXX)
++#if (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" OR CMAKE_COMPILER_IS_GNUCXX)
+   # SSE2?
+-  if (CMAKE_G2O_HAS_SSE2)
+-    add_compile_options(-msse2)
+-  endif()
++  #  if (CMAKE_G2O_HAS_SSE2)
++  #    add_compile_options(-msse2)
++  #  endif()
+   # SSE3?
+-  if (CMAKE_G2O_HAS_SSE3)
+-    add_compile_options(-msse3 -mssse3)
+-  endif()
++  #  if (CMAKE_G2O_HAS_SSE3)
++  #    add_compile_options(-msse3 -mssse3)
++  #  endif()
+   # SSE4*?
+-  if (CMAKE_G2O_HAS_SSE4_1)
+-    add_compile_options(-msse4.1)
+-  endif()
+-  if (CMAKE_G2O_HAS_SSE4_2)
+-    add_compile_options(-msse4.2)
+-  endif()
+-  if (CMAKE_G2O_HAS_SSE4_A)
+-    add_compile_options(-msse4a)
+-  endif()
+-endif()
++  #  if (CMAKE_G2O_HAS_SSE4_1)
++  #    add_compile_options(-msse4.1)
++  #  endif()
++  #  if (CMAKE_G2O_HAS_SSE4_2)
++  #    add_compile_options(-msse4.2)
++  #  endif()
++  #  if (CMAKE_G2O_HAS_SSE4_A)
++  #    add_compile_options(-msse4a)
++  #  endif()
++  #endif()
+ # End of of SSE* autodetect code -------
+ 
+ # Compiler specific options for gcc
+@@ -355,11 +355,13 @@
+ # Find Eigen3. If it defines the target, this is used. If not,
+ # fall back to the using the module form.
+ # See https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html for details
+-find_package(Eigen3 REQUIRED)
++#find_package(Eigen3 REQUIRED)
++find_package(PkgConfig)
++pkg_check_modules(EIGEN3 REQUIRED eigen3)
+ if (TARGET Eigen3::Eigen)
+   set(G2O_EIGEN3_EIGEN_TARGET Eigen3::Eigen)
+ else()
+-  include_directories(${EIGEN3_INCLUDE_DIR})
++  include_directories(${EIGEN3_INCLUDE_DIRS})
+ endif ()
+ 
+ # Set up the top-level include directories

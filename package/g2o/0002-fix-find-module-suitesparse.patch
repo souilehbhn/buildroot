@@ -1,0 +1,10 @@
+--- a/cmake_modules/FindSuiteSparse.cmake	2017-07-26 18:32:34.000000000 +0100
++++ b/cmake_modules/FindSuiteSparse.cmake	2019-09-26 13:33:53.480085494 +0100
+@@ -6,6 +6,7 @@
+     /opt/local/include/ufsparse
+     /usr/local/include/ufsparse
+     /sw/include/ufsparse
++    /usr/include
+   )
+ 
+ find_library(CHOLMOD_LIBRARY NAMES cholmod
